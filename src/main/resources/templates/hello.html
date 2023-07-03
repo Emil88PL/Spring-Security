@@ -6,6 +6,8 @@
     </head>
     <body>
         <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+        <p>Click <a th:href="@{/home}">here</a> to see home.</p>
+        <p>Click <a th:href="@{/secret}">here</a> to Reveal a secret</p>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
         </form>
