@@ -9,6 +9,8 @@
         </div>
         <div th:if="${param.logout}">
             You have been logged out.
+    <p>Click <a th:href="@{/home}">here</a> to see a home page.</p>
+
         </div>
         <form th:action="@{/login}" method="post">
             <div><label> User Name : <input type="text" name="username"/> </label></div>

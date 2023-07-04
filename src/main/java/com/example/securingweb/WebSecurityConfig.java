@@ -31,14 +31,26 @@ public class WebSecurityConfig {
 	}
 
 	@Bean
-	public UserDetailsService userDetailsService() {
-		UserDetails user =
-			 User.withDefaultPasswordEncoder()
-				.username("Emil")
-				.password("password")
-				.roles("USER")
-				.build();
-
-		return new InMemoryUserDetailsManager(user);
+	public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+		return new InMemoryUserDetailsManager(
+			User.withDefaultPasswordEncoder().username("user").password("password")
+			.authorities("ROLE_USER").build(),
+			User.withDefaultPasswordEncoder().username("Emil").password("admin")
+			.authorities("ROLE_ADMIN", "ROLE_USER").build()
+		);
 	}
+
+
+	// @Bean
+	// public UserDetailsService userDetailsService() {
+	// 	UserDetails user =
+	// 		 User.withDefaultPasswordEncoder()
+	// 			.username("Emil")
+	// 			.password("password")
+	// 			.roles("USER")
+	// 			.build();
+	// 	return new InMemoryUserDetailsManager(user);
+	// }
+
+	
 }
